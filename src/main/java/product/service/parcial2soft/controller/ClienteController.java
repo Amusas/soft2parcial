@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import product.service.parcial2soft.dto.ClienteCreateDTO;
-import product.service.parcial2soft.dto.ClienteResponseDTO;
-import product.service.parcial2soft.dto.ClienteUpdateDTO;
+import product.service.parcial2soft.dto.cliente.ClienteCreateDTO;
+import product.service.parcial2soft.dto.cliente.ClienteResponseDTO;
+import product.service.parcial2soft.dto.cliente.ClienteUpdateDTO;
 import product.service.parcial2soft.service.interfaces.ClienteService;
 
 import java.util.List;

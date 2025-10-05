@@ -1,6 +1,5 @@
 package product.service.parcial2soft.exception_handler;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import product.service.parcial2soft.dto.ErrorResponse;
 import product.service.parcial2soft.dto.ValidationErrorResponse;
-import product.service.parcial2soft.exceptions.ClienteExitsException;
-import product.service.parcial2soft.exceptions.ClienteNotFoundException;
+import product.service.parcial2soft.exceptions.cliente.ClienteExitsException;
+import product.service.parcial2soft.exceptions.cliente.ClienteNotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +19,7 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 @Slf4j
-public class GlobalExceptionHandler {
+public class ClientExceptionHandler {
 
     /**
      * Maneja la excepción cuando no se encuentra un cliente

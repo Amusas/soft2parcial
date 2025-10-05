@@ -1,4 +1,4 @@
-package product.service.parcial2soft.exceptions;
+package product.service.parcial2soft.exceptions.cliente;
 
 // Excepción cuando no se encuentra un recurso
 public class ClienteNotFoundException extends RuntimeException {

@@ -1,9 +1,9 @@
 package product.service.parcial2soft.service.interfaces;
 
 
-import product.service.parcial2soft.dto.ClienteCreateDTO;
-import product.service.parcial2soft.dto.ClienteResponseDTO;
-import product.service.parcial2soft.dto.ClienteUpdateDTO;
+import product.service.parcial2soft.dto.cliente.ClienteCreateDTO;
+import product.service.parcial2soft.dto.cliente.ClienteResponseDTO;
+import product.service.parcial2soft.dto.cliente.ClienteUpdateDTO;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package product.service.parcial2soft.dto;
+package product.service.parcial2soft.dto.cliente;
 
 import java.time.LocalDateTime;
 

@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import product.service.parcial2soft.dto.ClienteCreateDTO;
-import product.service.parcial2soft.dto.ClienteResponseDTO;
-import product.service.parcial2soft.dto.ClienteUpdateDTO;
+import product.service.parcial2soft.dto.cliente.ClienteCreateDTO;
+import product.service.parcial2soft.dto.cliente.ClienteResponseDTO;
+import product.service.parcial2soft.dto.cliente.ClienteUpdateDTO;
 import product.service.parcial2soft.entity.Cliente;
-import product.service.parcial2soft.exceptions.ClienteExitsException;
-import product.service.parcial2soft.exceptions.ClienteNotFoundException;
+import product.service.parcial2soft.exceptions.cliente.ClienteExitsException;
+import product.service.parcial2soft.exceptions.cliente.ClienteNotFoundException;
 import product.service.parcial2soft.mapper.ClienteMapper;
 import product.service.parcial2soft.repository.ClienteRepository;
 import product.service.parcial2soft.service.interfaces.ClienteService;
@@ -29,7 +29,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ClienteResponseDTO createCliente(ClienteCreateDTO dto) {
-        log.info("Creando nuevo cliente con documento: {}", dto.email());
+        log.info("Creando nuevo cliente con email: {}", dto.email());
 
         // Validar que no exista un cliente con el email
         if (clienteRepository.existsByEmail(dto.email())) {
