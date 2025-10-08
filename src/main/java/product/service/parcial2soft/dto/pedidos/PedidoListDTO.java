@@ -13,7 +13,6 @@ public record PedidoListDTO(
         Long id,
         String numeroPedido,
         String nombreCliente,
-        String documentoCliente,
         BigDecimal total,
         EstadoPedido estado,
         MetodoPago metodoPago,

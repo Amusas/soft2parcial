@@ -46,8 +46,7 @@ public class DetallePedido {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof DetallePedido)) return false;
-        DetallePedido that = (DetallePedido) o;
+        if (!(o instanceof DetallePedido that)) return false;
         return id != null && id.equals(that.getId());
     }
 

@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 /**
  * DTO de respuesta completa del pedido
  */
@@ -17,7 +18,6 @@ public record PedidoResponseDTO(
         ClienteResponseDTO cliente,
         List<DetallePedidoDTO> detalles,
         BigDecimal subtotal,
-        BigDecimal descuentoTotal,
         BigDecimal total,
         EstadoPedido estado,
         MetodoPago metodoPago,
