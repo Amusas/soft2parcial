@@ -12,6 +12,7 @@ import product.service.parcial2soft.dto.ErrorResponse;
 import product.service.parcial2soft.dto.ValidationErrorResponse;
 import product.service.parcial2soft.exceptions.cliente.ClienteExitsException;
 import product.service.parcial2soft.exceptions.cliente.ClienteNotFoundException;
+import product.service.parcial2soft.exceptions.cliente.IncorrectPasswordException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,6 +61,27 @@ public class ClientExceptionHandler {
     }
 
     /**
+     * Maneja la excepción cuando ya existe un cliente
+     */
+    @ExceptionHandler(IncorrectPasswordException.class)
+    public ResponseEntity<ErrorResponse> handlePasswordException(
+            IncorrectPasswordException ex, WebRequest request) {
+
+        log.warn("Contraseña incorrecta: {}", ex.getMessage());
+
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "Bad Request",
+                ex.getMessage(),
+                request.getDescription(false).replace("uri=", "")
+        );
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+
+
+    /**
      * Maneja errores de validación de Jakarta Validation
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -77,8 +99,7 @@ public class ClientExceptionHandler {
                             ((FieldError) error).getField() : error.getObjectName();
                     String errorMessage = error.getDefaultMessage();
                     return new ValidationErrorResponse.FieldError(fieldName, errorMessage);
-                })
-                .collect(Collectors.toList());
+                }).toList();
 
         ValidationErrorResponse errorResponse = new ValidationErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
@@ -91,23 +112,6 @@ public class ClientExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    /**
-     * Maneja excepciones genéricas no controladas
-     */
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGenericException(
-            Exception ex, WebRequest request) {
 
-        log.error("Error interno del servidor: {}", ex.getMessage(), ex);
-
-        ErrorResponse errorResponse = new ErrorResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Internal Server Error",
-                "Ocurrió un error interno en el servidor",
-                request.getDescription(false).replace("uri=", "")
-        );
-
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
 
 }
